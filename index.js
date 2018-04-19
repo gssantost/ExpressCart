@@ -3,6 +3,7 @@ const config = require('./helpers/config');
 const app = express();
 
 app.use('/views', express.static(__dirname + '/public'));
+app.use('/materialize', express.static(__dirname + '/node_modules/materialize-css/dist/'));
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.get('/', (req, res) => {

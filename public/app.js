@@ -1,24 +1,22 @@
-const $ = (id) => document.getElementById(id);
-
 const selectUser = () => {
-    if ($('user').value.trim() !== '') {
-        fetch(`../db/getUser/${$('user').value.trim()}`).then(res => res.json()).then(data => console.log(data));
+    if ($('username').value.trim() !== '') {
+        fetch(`../db/getUser/${$('username').value.trim()}`).then(res => res.json()).then(data => console.log(data));
     } else {
         console.log('Wrong value');
     }
 }
 
-const regitserUser = () => {
-    if (($('name').value && $('lastname').value && $('username').value && $('email').value && $('password').value) !== '') {
+const registerUser = () => {
+    if (($('name').value && $('lastname').value && $('user').value && $('email').value && $('pass').value) !== '') {
         let configs = {
             headers: {'Content-Type':'application/json' },
             method: 'post',
             body: JSON.stringify({
                 name: $('name').value.trim(),
                 lastname: $('lastname').value.trim(),
-                username: $('username').value.trim(),
+                username: $('user').value.trim(),
                 email: $('email').value.trim(),
-                password: $('password').value.trim()
+                password: $('pass').value.trim()
             })
         }
         fetch(`../db/createUser`, configs).then(res => res.json()).then(data => console.log(data));
@@ -27,5 +25,15 @@ const regitserUser = () => {
     }
 }
 
-$('getBtn').addEventListener('click', selectUser);
-$('postBtn').addEventListener('click', regitserUser);
+const handleLogin = (e) => {
+    e.preventDefault();
+    selectUser();
+}
+
+const handleRegistry = (e) => {
+    e.preventDefault();
+    registerUser();
+}
+
+$('register-button').addEventListener('click', handleRegistry);
+$('login-button').addEventListener('click', handleLogin);

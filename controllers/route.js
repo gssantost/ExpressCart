@@ -1,6 +1,7 @@
 const express = require('express');
-let db = require('../helpers/db');
-let query = require('../helpers/queries');
+const db = require('../helpers/db');
+const query = require('../helpers/queries');
+const encrypter = require('../helpers/encrypter');
 let route = express.Router();
 //SELECT
 route.get('/getUser/:param', (req, res) => {
@@ -31,7 +32,8 @@ route.get('/getUser/:param', (req, res) => {
 //INSERT
 route.post('/createUser', (req, res) => {
     db.connect().then(obj => {
-        obj.one(query[1], [req.body.name, req.body.lastname, req.body.username, req.body.email, req.body.password]).then(data => {
+        let hashedPass = encrypter.passwordAsHash(req.body.password);
+        obj.one(query[1], [req.body.name, req.body.lastname, req.body.username, req.body.email, hashedPass]).then(data => {
             console.log(data);
             res.send({data: data, status: 200});
             obj.done();
