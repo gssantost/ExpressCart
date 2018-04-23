@@ -1,17 +1,33 @@
+body {
+    background-image: url('../images/carmine-pink-solid-color-background.jpg');
+}
+
+.base-column {
+    background-color: #fff;
+}
+
+.titular {
+    font-family: 'Raleway', sans-serif;
+}
+
+.with-radius {
+    border-radius: 25px;
+}
+
 .tab a.active {
-    color: #ffaa00 !important;
+    color: #ea4c41 !important;
     background-color: #fff !important;
 }
 
 .tabs .tab a:hover {
     background-color: #fff !important;
-    color: #ffaa00 !important;
+    color: #ea2241 !important;
 }
 
 .tabs .tab a {
-    color: #ffaa00b7 !important;
+    color: #ea4c41 !important;
 }
 
 .tabs .indicator {
-    background-color: #ffaa00 !important;
+    background-color: #ea4c41 !important;
 }

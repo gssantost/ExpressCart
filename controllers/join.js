@@ -3,34 +3,9 @@ const db = require('../helpers/db');
 const query = require('../helpers/queries');
 const encrypter = require('../helpers/encrypter');
 let route = express.Router();
-//SELECT
-route.get('/getUser/:param', (req, res) => {
-    db.connect().then((obj) => {
-        obj.one(query[0], [req.params.param])
-        .then((data) => {
-            console.log(data);
-            res.send({data: data, status: 200});
-            obj.done();
-        }).catch((err) => {
-            console.log(err);
-            res.send({
-                error: err,
-                msg: 'No Record Found',
-                status: 500
-            });
-            obj.done();
-        })
-    }).catch((error) => {
-        console.log(error);
-        res.send({
-            error: error,
-            msg: 'not Created',
-            status: 500
-        });
-    })
-})
-//INSERT
-route.post('/createUser', (req, res) => {
+
+//REGISTRO DE USUARIO
+route.post('/create', (req, res) => {
     db.connect().then(obj => {
         let hashedPass = encrypter.passwordAsHash(req.body.password);
         obj.one(query[1], [req.body.name, req.body.lastname, req.body.username, req.body.email, hashedPass]).then(data => {
@@ -51,4 +26,5 @@ route.post('/createUser', (req, res) => {
         });
     })
 })
+
 module.exports = route;
