@@ -28,4 +28,6 @@ passport.deserializeUser((user, done) => {
     done(null, user);
 })
 
-app.listen(config.port, () => console.log(`Application listening on port ${config.port}`));
+app.listen(config.port, () => {
+    console.log(`Application listening on port ${config.port}`);
+});

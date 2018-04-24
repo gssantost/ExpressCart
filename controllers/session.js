@@ -5,7 +5,7 @@ let router = express.Router();
 
 router.get('/value', auth.isAuth, (req, res) => {
     console.log(req.session);
-    res.send({session: req.session.passport});
+    res.send({status: 200, session: req.session.passport});
 })
 
 router.post('/login', auth.isLogged, (req, res, next) => {
@@ -25,7 +25,8 @@ router.post('/login', auth.isLogged, (req, res, next) => {
                 })
             }
             res.status(200).send({
-                status: 'Login successful!'
+                response: 'Login successful!',
+                url: '/views/users/'
             })
         })
     })(req, res, next);
@@ -34,7 +35,8 @@ router.post('/login', auth.isLogged, (req, res, next) => {
 router.get('/logout', auth.isAuth, (req, res) => {
     req.logout();
     res.status(200).send({
-        status: 'Bye!'
+        response: 'Bye!',
+        url: '/'
     })
 });
 

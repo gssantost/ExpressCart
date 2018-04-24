@@ -9,7 +9,7 @@ module.exports = new localStrategy((username, password, done) => {
         }
         User.comparePassword(password, data.password).then((isMatch) => {
             if (isMatch) {
-                return done(null, data);
+                return done(null, {id: data.id_user, username: data.username});
             } else {
                 return done(null, false);
             }

@@ -10,23 +10,18 @@ const login = () => {
     }
     if (($('username').value.trim() && $('password').value.trim()) !== '') {
         fetch(`../session/login`, configs)
-            .then(res => res.json())
-            .then(data => console.log(data));
+            .then(res => {
+                return res.json();
+            })
+            .then(data => {
+                console.log(data);
+                if (data.url) {
+                    location.href = data.url;
+                }
+            });
     } else {
         M.toast({html: '¡Campos vacíos!', classes: 'cyan'})
     }
-}
-
-const logout = () => {
-    fetch(`../session/logout`, { headers: { 'Content-Type': 'aapplication/json' }, credentials: 'same-origin' })
-        .then(res => res.json())
-        .then(data => console.log(data));
-}
-
-const getSession = () => {
-    fetch(`../session/value`, { headers: { 'Content-Type': 'aapplication/json' }, credentials: 'same-origin' })
-        .then(res => res.json())
-        .then(data => console.log(data));
 }
 
 const registerUser = () => {
@@ -60,5 +55,3 @@ const handleRegistry = (e) => {
 
 $('register-button').addEventListener('click', handleRegistry);
 $('login-button').addEventListener('click', handleLogin);
-//$('logout-button').addEventListener('click', logout);
-//$('check-button').addEventListener('click', getSession);
