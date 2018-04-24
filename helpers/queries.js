@@ -7,6 +7,7 @@ let queries = {
     'updateProductPrice': 'UPDATE public.product SET product_price = $1 WHERE id_product = $2',
     'updateProductStock': 'UPDATE public.product SET product_stock = $1 WHERE id_product = $2',
     'updateProductDes': 'UPDATE public.product SET product_des = $1 WHERE id_product = $2',
-    'updateProductName': 'UPDATE public.product SET product_name = $1 WHERE id_product = $2'
+    'updateProductName': 'UPDATE public.product SET product_name = $1 WHERE id_product = $2',
+    'showProducts': 'SELECT product_name, product_des, product_price FROM public.product',
 }
 module.exports = queries;
