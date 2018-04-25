@@ -1,4 +1,4 @@
-body {
+.body {
     background-image: url('../images/carmine-pink-solid-color-background.jpg');
 }
 
@@ -31,3 +31,71 @@ body {
 .tabs .indicator {
     background-color: #ea4c41 !important;
 }
+.side{
+    width: 320px;
+    height: 560px;
+    background-color: palegoldenrod;
+    border: px;
+    border-style: outset;
+    border-radius: 3px;
+}
+.body1{
+    background-color: beige;
+}
+
+.labe{
+    background-color:darkseagreen;
+    position: absolute;
+    height: 40px!important;
+    width: 210px !important;
+    /* right: 1em; */
+    left: 3.5em !important;
+    top: 6em !important;
+    border-radius: 5px;
+}
+.letras{
+    position: absolute;
+    top: -0.7em;
+    letter-spacing: 1px;
+}
+.btncomprar{
+    background-color:darkseagreen;
+    position: absolute;
+    top: 37em;
+    left: 7em;
+}
+.shop{
+    position: absolute;
+    top: -1em;
+    left: 0.4em;
+    font-family: sans-serif;
+    color: black;
+}
+.products{
+    border: 2px;
+    position: absolute;
+    width: 1038px;
+    height: 350 px;
+    height: 560px;
+    right: 0.2em;
+    background-color: palegoldenrod;
+    top: 5.3em;
+    border-radius: 5px;
+    
+}
+.this{
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    bottom: 0.5em;
+    right: 1em;
+}
+
+.add{
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    right: 0em;
+    bottom: 0em;
+}
+

@@ -139,3 +139,15 @@ function update() {
     $('updatePrice').value = '';
     $('updateStock').value = '';
 }
+const home =() => {
+    fetch(`../../show/mostrar`, { headers: { 'Content-Type': 'application/json' }, credentials: 'same-origin' })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+            if (data.url) {
+                location.href = data.url;
+            }
+        });
+}
+$('home-button').addEventListener("click", home);
+//$('logout-button').addEventListener('click', logout);
