@@ -10,7 +10,12 @@ let queries = {
     'selectProductById': 'SELECT product_name, product_des, product_price, product_stock FROM public.product WHERE id_product = $1',
     'updateProductDes': 'UPDATE public.product SET product_des = $1 WHERE id_product = $2',
     'updateProductName': 'UPDATE public.product SET product_name = $1 WHERE id_product = $2',
-    'showProducts': 'SELECT product_name, product_des, product_price FROM public.product',
-    'selectAllByUsername': 'SELECT a.id_user, name, lastname, username, password, email, id_cart FROM public.app_user a INNER JOIN public.cart c ON a.id_user = c.id_user WHERE a.username = $1'
+    'showProducts': 'SELECT product_name, product_des, product_price, id_product FROM public.product',
+    'selectAllByUsername': 'SELECT a.id_user, name, lastname, username, password, email, id_cart FROM public.app_user a INNER JOIN public.cart c ON a.id_user = c.id_user WHERE a.username = $1',
+    'insertCartItem': 'INSERT INTO public.cart_item (id_product, id_cart, item_quantity) VALUES ($1, $2, 1)',
+    'updateCartTotal': `UPDATE public.cart SET cart_total = (SELECT SUM(item_quantity*product_price) 
+                        FROM public.cart_item c, public.product p WHERE c.id_product = p.id_product AND id_cart = $1) WHERE id_cart = $2 
+                        RETURNING cart_total`,
+    'selectCartItems': 'SELECT product_name FROM public.product p INNER JOIN public.cart_item c ON p.id_product = c.id_product WHERE id_cart = $1'
 }
 module.exports = queries;
