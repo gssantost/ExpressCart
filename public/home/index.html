@@ -7,62 +7,56 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="initial-scale=1.0">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="/materialize/css/materialize.css">
     <link rel="stylesheet" href="../css/styles.css">
 
 </head>
 
 <body class="body1">
-        <nav>
-            
-                <div class="nav-wrapper">
-                        <a href="#" class="brand-logo black-text">
-                                  ExpressCart  <img src="../images/carrito.png"style="
-                                  height: 52px;
-                                  /* bottom: 10px; */
-                                  position: absolute;
-                                  top: -0.0010em;
-                                  right: -1.2em;
-                                  ">
-                            </a>
-                            <ul id="nav-list" class="right">
-                            </ul>
-                  <form style="
-                  width:  350px;
-                  position: absolute;
-                  right:  0em">
-                        <div class="input-field" style="
-                        position:  absolute;
-                        width:  350px;">
-
-                        <input id="search" type="search" required>                 
-                        <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-                        <i class="material-icons">close</i>
-                    </div>
-                  </form>
+    <!--Navegador-->
+    <nav>
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo black-text">ExpressCart
+                <img src="../images/carrito.png" style="height: 52px; position: absolute; top: -0.0010em; right: -1.2em;">
+            </a>
+            <ul id="nav-list" class="right">
+                <li><a href="/views/home/" id="homeLink">Home</a></li>
+                <li><a href="/views/users/" id="profileLink"></a></li>
+                <li><a id="sessionLink"></a></li>
+            </ul>
+            <form style="width: 350px; margin: auto; right: 0em;">
+                <div class="input-field" style="margin: auto; width: 350px;">
+                    <input id="search" type="search" required>
+                    <label class="label-icon" for="search">
+                        <i class="material-icons">search</i>
+                    </label>
+                    <i class="material-icons">close</i>
                 </div>
-         </nav>
-    
+            </form>
+        </div>
+    </nav>
+    <!--Fin del Navegador-->
 
+    <ul id="slide-out" class="side-nav fixed side">
+        <div class="row">
+            <div class="col s1 labe">
+                <p class="letras"> Resumen de Compras<img src="../images/bolsa.png" style="height:  22px;"></p>
+            </div>
+        </div>
+        <a class="btn-floating btn-large  pulse btncomprar">
+            <p class="shop">SHOP</p>
+        </a>
+    </ul>
+    <a href="#" data-target="slide-out" class="sidenav-trigger"></a>
+    <div class="row products">
+        <div id="product-board"></div>
+    </div>
+    <script src="/materialize/js/materialize.js"></script>
+    <script src="../scripts/main.js"></script>
+    <script src="../scripts/home.js"></script>
 
-         <ul id="slide-out" class="side-nav fixed side" >
-                <div class="row">
-                        <div class="col s1 labe">
-                            <p class="letras"> Resumen de Compras <img src="../images/bolsa.png" style="
-                                height:  22px;
-                            "></p>
-                        </div>
-                        </div>
-                        <a class="btn-floating btn-large  pulse btncomprar"><p class="shop">SHOP</p></a>
-
-         </ul>
-         <a href="#" data-target="slide-out" class="sidenav-trigger"></a>
-         <div class="row products">
-                <div id="product-board"></div>
-            </div>  
-            <script src="/materialize/js/materialize.js"></script>
-            <script src="../scripts/main.js"></script>
-            <script src="../scripts/home.js"></script>
-        
 </body>
+
 </html>

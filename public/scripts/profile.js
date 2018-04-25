@@ -21,6 +21,9 @@ window.onload = () => {
                 $('userProducts').appendChild(item.item);
             }
         })
+        .catch(err => {
+            console.log({response: 'No posee productos', error: err});
+        })
     var collapsibleElem = document.querySelectorAll('.collapsible');
     var collapsibleInstance = M.Collapsible.init(collapsibleElem);
 }
@@ -36,20 +39,6 @@ function upload() {
         .then(res => res.json())
         .then(data => console.log(data));
 }
-
-const logout = () => {
-    fetch(`../../session/logout`, { headers: { 'Content-Type': 'application/json' }, credentials: 'same-origin' })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data);
-            if (data.url) {
-                location.href = data.url;
-            }
-        });
-}
-
-$('logout-button').addEventListener('click', logout);
-
 
 class ListItem {
     constructor(props) {
@@ -74,7 +63,6 @@ class ListItem {
         this.updateBtn.innerHTML = 'Editar';
         this.removeBtn.classList.add('btn', 'btn-flat', 'waves-effect', 'waves-red');
         this.removeBtn.innerHTML = 'Eliminar';
-
         this.updateBtn.onclick = (e) => {
             e.preventDefault();
             fetch(`../../products/by/${props.id_product}`, { headers: { 'Content-Type': 'application/json' }, credentials: 'same-origin' })
@@ -90,7 +78,6 @@ class ListItem {
 
             modalUpdate.open();
         }
-
         this.removeBtn.remove.onclick = (e) => {
             e.preventDefault();
             fetch(`../../products/remove/${data.data[i].id_product}`, { credentials: 'same-origin' })
@@ -100,7 +87,6 @@ class ListItem {
                     location.href = '/views/users';
                 })
         }
-
         div.appendChild(this.updateBtn);
         div.appendChild(this.removeBtn);
         divCollapse.appendChild(div);
@@ -149,5 +135,3 @@ const home =() => {
             }
         });
 }
-$('home-button').addEventListener("click", home);
-//$('logout-button').addEventListener('click', logout);

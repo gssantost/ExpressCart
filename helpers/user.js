@@ -6,7 +6,7 @@ module.exports.getUserData = (username) => {
     return new Promise((res, rej) => {
         db.connect().then((obj) => {
             //REALIZO QUERY QUE ME RETORNARÁ TODA LA INFORMACIÓN DEL USUARIO
-            obj.one(query['selectByUsername'], username).then((data) => {
+            obj.one(query['selectAllByUsername'], username).then((data) => {
                 res(data);
                 //console.log(data);
                 obj.done();
