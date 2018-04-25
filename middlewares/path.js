@@ -1,6 +1,7 @@
 const fs = require('fs');
 const os = require('os');
 const root = `${os.homedir()}/ShoppingCartUploads`;
+//const root = `/public/uploads`;
 
 module.exports.checkRoot = (req, res, next) => {
     fs.exists(root, (exists) => {

@@ -81,4 +81,47 @@ router.get('/remove/:id', (req, res) => {
         })
     })
 });
+//Select Product By Id_Product
+router.get('/by/:id', (req, res) => {
+    db.connect().then(obj => {
+        obj.one(query['selectProductById'], req.params.id).then(data => {
+            //console.log(data);
+            res.send({ status: 200, data: data, response: 'Product ready to Update'});
+            obj.done();
+        }).catch((err) => {
+            console.log(err);
+            res.send({ status: 500, error: err, msg: 'Invalid request' });
+            obj.done();
+        })
+    }).catch((err) => {
+        console.log(err);
+        res.send({
+            error: err,
+            msg: 'not Created',
+            status: 500
+        })
+    })
+});
+//Update
+router.put('/update', (req, res) => {
+    db.connect().then((obj) => {
+        console.log(req.body);
+        obj.any(query['updateProduct'], [req.body.name, req.body.description, req.body.price, req.body.stock, req.body.id]).then(data => {
+            console.log(data);
+            res.send({status: 200, response: 'Product Updated!'});
+            obj.done();
+        }).catch((err) => {
+            console.log(err);
+            res.send({ status: 500, error: err, msg: 'Invalid request' });
+            obj.done();
+        })
+    }).catch((err) => {
+        console.log(err);
+        res.send({
+            error: err,
+            msg: 'not Created',
+            status: 500
+        })
+    })
+});
 module.exports = router;

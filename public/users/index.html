@@ -54,63 +54,90 @@
                                     </div>
                                 </div>
                                 <div class="col m6 l6">
-                                    <div class="input-field">
-                                        <label for="stock">Cantidad: </label>
-                                        <input type="number" name="stock" id="stock" class="validate">
-                                    </div>
+                                    <div class="input-field"></div>
+                                    <label for="stock">Cantidad: </label>
+                                    <input type="number" name="stock" id="stock" class="validate">
                                 </div>
-                                <br>
-                                <div class="col m12 l12">
-                                    <div class="file-field input-field">
-                                        <div class="btn cyan">
-                                            <span>Archivo: </span>
-                                            <input type="file" name="file" id="file" accept="image/">
-                                        </div>
-                                        <div class="file-path-wrapper">
-                                            <input type="text" class="file-path validate">
-                                        </div>
-                                    </div>
-                                </div>
-                                <button class="btn waves-effect waves-light cyan" onclick="upload()">Subir!</button>
-                                <br>
-                                <br>
-                                <div id="fetch-loader" style="display: none;">
-                                    <div class="preloader-wrapper big active">
-                                        <div class="spinner-layer spinner-blue-only">
-                                            <div class="circle-clipper left">
-                                                <div class="circle"></div>
-                                            </div>
-                                            <div class="gap-patch">
-                                                <div class="circle"></div>
-                                            </div>
-                                            <div class="circle-clipper right">
-                                                <div class="circle"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <p class="flow-text" id="response-text"></p>
                             </div>
-                            <div class="modal-footer">
-                                <a class="modal-action modal-close waves-effect waves-green btn-flat">Seguir añadiendo</a>
-                                <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Volver</a>
+                            <br>
+                            <div class="col m12 l12">
+                                <div class="file-field input-field">
+                                    <div class="btn cyan">
+                                        <span>Archivo: </span>
+                                        <input type="file" name="file" id="file" accept="image/">
+                                    </div>
+                                    <div class="file-path-wrapper">
+                                        <input type="text" class="file-path validate">
+                                    </div>
+                                </div>
                             </div>
+                            <button class="btn waves-effect waves-light cyan" onclick="upload()">Subir!</button>
+                            <br>
+                            <br>
+                            <div id="fetch-loader" style="display: none;">
+                                <div class="preloader-wrapper big active">
+                                    <div class="spinner-layer spinner-blue-only">
+                                        <div class="circle-clipper left">
+                                            <div class="circle"></div>
+                                        </div>
+                                        <div class="gap-patch">
+                                            <div class="circle"></div>
+                                        </div>
+                                        <div class="circle-clipper right">
+                                            <div class="circle"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="flow-text" id="response-text"></p>
+                        </div>
+                        <div class="modal-footer">
+                            <a class="modal-action modal-close waves-effect waves-green btn-flat">Seguir añadiendo</a>
+                            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Volver</a>
                         </div>
                     </div>
-                    <!-- end of MODAL -->
                 </div>
-                <div class="col m2 l3"></div>
+                <!-- end of MODAL -->
             </div>
-        </div>
-        <ul class="collection" id="userProducts">
-        </ul>
-        <div class="row center-align">
-            <button class="btn waves-effect waves-light cyan" id="logout-button">LOG OUT</button>
+            <div class="col m2 l3"></div>
         </div>
     </div>
-    <script src="/materialize/js/materialize.js"></script>
-    <script src="../scripts/main.js"></script>
-    <script src="../scripts/profile.js"></script>
+    <div class="row">
+        <div class="col m2 l3"></div>
+        <div class="col m8 l6">
+            <ul class="collapsible base-column" id="userProducts"></ul>
+        </div>
+        <div class="col m2 l3"></div>
+    </div>
+    <div class="row center-align">
+        <button class="btn waves-effect waves-light cyan" id="logout-button">LOG OUT</button>
+    </div>
+    <br>
+    <!-- Modal Trigger -->
+    <!-- <a class="waves-effect waves-light btn cyan pulse modal-trigger" href="#modal">AÑADIR ARTÍCULO</a> -->
+
+    <!-- Modal Structure -->
+    <div id="updateModal" class="modal">
+        <div class="modal-content">
+            <h4>Modifica el producto: </h4>
+            <label for="name">Nombre: </label>
+            <input type="text" name="name" id="updateName" class="validate">
+            <label for="description">Descripción: </label>
+            <input type="text" name="description" id="updateDescrip" class="validate">
+            <label for="price">Precio: </label>
+            <input type="number" name="price" id="updatePrice" class="validate">
+            <label for="stock">Cantidad: </label>
+            <input type="number" name="stock" id="updateStock" class="validate">
+            <input name="productId" id="productId" type="hidden">
+            <br>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat" onclick="update()">Actualizar</a>
+        </div>
+    </div>
+        <script src="/materialize/js/materialize.js"></script>
+        <script src="../scripts/main.js"></script>
+        <script src="../scripts/profile.js"></script>
 
 </body>
 
