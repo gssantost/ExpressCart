@@ -4,11 +4,10 @@ const query = require('../helpers/queries');
 let router = express.Router();
 
 router.get('/mostrar', (req, res) => {
-    var data = new JSONArray();
     db.connect().then(obj => {
         obj.many(query['showProducts']).then(data => {
             //console.log(data);
-            res.send({status: 200, data: data});
+            res.send({status: 200, data: data, url: '/views/home/'});
             obj.done();
         }).catch((err) => {
             console.log(err);
@@ -20,7 +19,9 @@ router.get('/mostrar', (req, res) => {
         res.send({
             error: err,
             msg: 'not Created',
-            status: 500
+            status: 500,
+            url: '/views/home/'
         });
     })
 });
+module.exports = router;
